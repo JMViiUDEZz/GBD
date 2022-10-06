@@ -1,0 +1,6 @@
+SELECT NOMBRECLIENTE,NOMBRE,O.`Ciudad` FROM CLIENTES C INNER JOIN EMPLEADOS E ON C.`CodigoEmpleadoRepVentas`=E.`CodigoEmpleado` INNER JOIN OFICINAS O ON O.`CodigoOficina`=E.`CodigoOficina`
+SELECT DISTINCT NOMBRECLIENTE,NOMBRE,O.`Ciudad` FROM CLIENTES C INNER JOIN EMPLEADOS E ON C.`CodigoEmpleadoRepVentas`=E.`CodigoEmpleado` INNER JOIN OFICINAS O ON O.`CodigoOficina`=E.`CodigoOficina` INNER JOIN PAGOS P WHERE P.`CodigoCliente`=C.`CodigoCliente`
+SELECT DISTINCT NOMBRECLIENTE,NOMBRE,O.`Ciudad` FROM CLIENTES C INNER JOIN EMPLEADOS E ON C.`CodigoEmpleadoRepVentas`=E.`CodigoEmpleado` INNER JOIN OFICINAS O ON O.`CodigoOficina`=E.`CodigoOficina` WHERE CodigoCliente IN (SELECT codigocliente FROM pagos)
+SELECT DISTINCT NOMBRECLIENTE,NOMBRE,O.`Ciudad` FROM CLIENTES C INNER JOIN EMPLEADOS E ON C.`CodigoEmpleadoRepVentas`=E.`CodigoEmpleado` INNER JOIN OFICINAS O ON O.`CodigoOficina`=E.`CodigoOficina` WHERE CodigoCliente NOT IN (SELECT codigocliente FROM pagos)
+SELECT E.`Nombre`"NOMBRE EMPLEADO",E.`Apellido1`"APELLIDO EMPLEADO",J.`Nombre`"NOMBRE JEFE",J.`Apellido1`"APELLIDO JEFE" FROM empleados E LEFT JOIN empleados J ON E.`CodigoJefe`=J.`CodigoEmpleado`
+SELECT DISTINCT NOMBRECLIENTE FROM CLIENTES NATURAL JOIN PEDIDOS WHERE FechaEntrega>FechaEsperada
